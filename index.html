@@ -1,0 +1,153 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Martín Villalba | Portfolio</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+<div class="container">
+  <header>
+    <nav>
+      <h1>Martin.Dev</h1>
+      <button class="menu-btn" id="menu-btn">☰</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero fade-in">
+    <h2>¡Hola! Soy Martín 👋</h2>
+    <p>Desarrollador Full Stack en formación</p>
+    <a href="#proyectos" class="btn">Ver proyectos</a>
+  </section>
+
+  <section class="sobre-mi fade-in">
+    
+    <div class="sobre-mi-container">
+      <img src="ASSETS/Martin Perfil.jpeg" alt="Foto de Martín" class="avatar" loading="lazy"/>
+      <div class="tags">
+        <span class="tag html">HTML</span>
+        <span class="tag css">CSS</span>
+        <span class="tag js">JS</span>
+      </div>
+    </div>
+
+    <div class="info">
+      <h2>Sobre mí</h2>
+      <p>Soy un apasionado del desarrollo web, en formación como Desarrollador Full Stack. Me encanta construir aplicaciones funcionales e interactivas.</p>
+    </div>
+  
+  </section>
+
+  <section id="proyectos" class="proyectos fade-in">
+    
+    <h2>Proyectos</h2>
+    
+    <div class="proyectos-grid">
+    <div class="card">
+      <img src="ASSETS/Landing-MasStore.png" alt="vista de la pagina mas store" loading="lazy">
+      <div class="card-info">
+        <h3>LANDING-MASSTORE</h3>
+        <p>Muestra los productos en ventas de un local de electronica</p>
+        <div class="card-buttons">
+          <a href="#" class="btn">Demo</a>
+          <a href="#" class="btn btn-secondary">Código</a>
+        </div>
+      </div>
+    </div>
+  
+    <div class="card">
+      <img src="ASSETS/Maquetado-Facebook.png" alt="foto de facebook" loading="lazy">
+      <div class="card-info">
+        <h3>MAQUETADO-FACEBOOK</h3>
+        <p>Es una réplica de Facebook que utilicé para practicar FrontEnd</p>
+        <div class="card-buttons">
+          <a href="#" class="btn">Demo</a>
+          <a href="#" class="btn btn-secondary">Código</a>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <footer id="contacto" class="footer fade-in">
+  <p>© 2026 – Martín Villalba</p>
+
+  <div class="social-icons">
+    <a href="mailto:martin.villalba2197@gmail.com"
+   aria-label="Enviar email">
+  <i class="fas fa-envelope"></i>
+</a>
+
+    <a href="https://www.linkedin.com/public-profile/settings" target="_blank"
+ aria-label="LinkedIn" rel="noopener noreferrer"
+>
+      <i class="fab fa-linkedin"></i>
+    </a>
+    <a href="https://github.com/Martin2197" target="_blank"
+ aria-label="GitHub" rel="noopener noreferrer"
+>
+      <i class="fab fa-github"></i>
+    </a>
+  </div>
+</footer>
+
+<script>
+  const menuBtn = document.getElementById("menu-btn");
+  const navLinks = document.getElementById("nav-links");
+  const navItems = document.querySelectorAll(".nav-links a");
+
+  menuBtn.addEventListener("click", (e) => {
+    e.stopPropagation(); // evita que el click “suba” al documento
+    navLinks.classList.toggle("active");
+    menuBtn.textContent = navLinks.classList.contains("active") ? "✖" : "☰";
+  });
+
+  navItems.forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("active");
+      menuBtn.textContent = "☰";
+    });
+  });
+
+  // Cerrar si clickeás fuera
+  document.addEventListener("click", (e) => {
+    const clickDentroDelMenu = navLinks.contains(e.target);
+    const clickEnBoton = menuBtn.contains(e.target);
+
+    if (!clickDentroDelMenu && !clickEnBoton) {
+      navLinks.classList.remove("active");
+      menuBtn.textContent = "☰";
+    }
+  });
+
+  const faders = document.querySelectorAll(".fade-in");
+
+  const appearOnScroll = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      }
+    });
+  }, {
+    threshold: 0.2
+  });
+
+  faders.forEach(section => {
+    appearOnScroll.observe(section);
+  });
+</script>
+</div>
+</body>
+</html>

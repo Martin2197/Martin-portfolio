@@ -117,51 +117,7 @@
   </div>
 </footer>
 
-<script>
-  const menuBtn = document.getElementById("menu-btn");
-  const navLinks = document.getElementById("nav-links");
-  const navItems = document.querySelectorAll(".nav-links a");
-
-  menuBtn.addEventListener("click", (e) => {
-    e.stopPropagation(); // evita que el click “suba” al documento
-    navLinks.classList.toggle("active");
-    menuBtn.textContent = navLinks.classList.contains("active") ? "✖" : "☰";
-  });
-
-  navItems.forEach(link => {
-    link.addEventListener("click", () => {
-      navLinks.classList.remove("active");
-      menuBtn.textContent = "☰";
-    });
-  });
-
-  // Cerrar si clickeás fuera
-  document.addEventListener("click", (e) => {
-    const clickDentroDelMenu = navLinks.contains(e.target);
-    const clickEnBoton = menuBtn.contains(e.target);
-
-    if (!clickDentroDelMenu && !clickEnBoton) {
-      navLinks.classList.remove("active");
-      menuBtn.textContent = "☰";
-    }
-  });
-
-  const faders = document.querySelectorAll(".fade-in");
-
-  const appearOnScroll = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-      }
-    });
-  }, {
-    threshold: 0.2
-  });
-
-  faders.forEach(section => {
-    appearOnScroll.observe(section);
-  });
-</script>
+<script src="js/main.js"></script>
 </div>
 </body>
 </html>

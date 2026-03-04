@@ -1,3 +1,5 @@
+console.log("JS cargado correctamente");
+
 // MENU HAMBURGUESA
 const menuBtn = document.getElementById("menu-btn");
 const navLinks = document.getElementById("nav-links");

@@ -48,10 +48,31 @@ faders.forEach(section => {
 // FETCH BACKEND
 async function loadProjects() {
   try {
-    const response = await fetch("http://localhost:3000/projects");
+    const response = await fetch("https://portfolio-api-wauk.onrender.com/projects")
     const projects = await response.json();
 
-    console.log(projects);
+    console.log("Proyectos:", projects);
+
+    const container = document.getElementById("projects-container");
+
+    projects.forEach(project => {
+      const card = document.createElement("div");
+      card.classList.add("card");
+
+      card.innerHTML = `
+        <div class="card-info">
+          <h3>${project.name}</h3>
+          <p>${project.description}</p>
+          <div class="card-buttons">
+            <a href="${project.demo}" class="btn" target="_blank">Demo</a>
+            <a href="${project.github}" class="btn btn-secondary" target="_blank">Código</a>
+          </div>
+        </div>
+      `;
+
+      container.appendChild(card);
+    });
+
   } catch (error) {
     console.error("Error cargando proyectos:", error);
   }

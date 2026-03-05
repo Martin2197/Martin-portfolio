@@ -1,7 +1,10 @@
 const express = require("express");
+const cors = require("cors");
 
 const app = express();
 const PORT = 3000;
+
+app.use(cors());
 
 const projects = [
   {
@@ -17,10 +20,6 @@ const projects = [
     github: "https://github.com/Martin2197"
   }
 ];
-
-app.get("/", (req, res) => {
-  res.send("Backend del portfolio funcionando 🚀");
-});
 
 app.get("/projects", (req, res) => {
   res.json(projects);

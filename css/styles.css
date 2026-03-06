@@ -306,6 +306,35 @@ nav h1 {
   transform: translateY(0);
 }
 
+.card {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: cardAppear 0.6s ease forwards;
+}
+
+@keyframes cardAppear {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tech-stack{
+  display:flex;
+  gap:8px;
+  margin-bottom:12px;
+  flex-wrap:wrap;
+}
+
+.tech{
+  font-size:0.75rem;
+  background:#2a2a2a;
+  padding:4px 8px;
+  border-radius:6px;
+  color:#00d8ff;
+  font-weight:600;
+}
+
 /*<--------------------DESKTOP--------------------------->*/
 
 @media (min-width: 768px) {
@@ -385,4 +414,62 @@ nav h1 {
   justify-content: space-between;
   align-items: center;
 }
+}
+
+
+/* Skeleton loading */
+
+.skeleton-card {
+  background: #1e1e1e;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  gap: 10px;
+  border: 1px solid #242424;
+}
+
+.skeleton-img {
+  width: 76px;
+  height: 140px;
+  border-radius: 8px;
+  background: linear-gradient(
+    90deg,
+    #2a2a2a 25%,
+    #333 37%,
+    #2a2a2a 63%
+  );
+  background-size: 400% 100%;
+  animation: shimmer 1.4s infinite;
+}
+
+.skeleton-text {
+  flex: 1;
+}
+
+.skeleton-line {
+  height: 12px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  background: linear-gradient(
+    90deg,
+    #2a2a2a 25%,
+    #333 37%,
+    #2a2a2a 63%
+  );
+  background-size: 400% 100%;
+  animation: shimmer 1.4s infinite;
+}
+
+.skeleton-line.short {
+  width: 60%;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
 }

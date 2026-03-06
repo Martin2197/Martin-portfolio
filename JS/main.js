@@ -39,32 +39,71 @@ faders.forEach(section => {
   appearOnScroll.observe(section);
 });
 
+//SKELETON DE CARGA
+function showSkeletons() {
+  const container = document.getElementById("projects-container");
+
+  for (let i = 0; i < 3; i++) {
+    const skeleton = document.createElement("div");
+    skeleton.classList.add("skeleton-card");
+
+    skeleton.innerHTML = `
+      <div class="skeleton-img"></div>
+      <div class="skeleton-text">
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line short"></div>
+        <div class="skeleton-line"></div>
+      </div>
+    `;
+
+    container.appendChild(skeleton);
+  }
+}
+
 // FETCH BACKEND
 async function loadProjects() {
+
+  const container = document.getElementById("projects-container");
+
+  showSkeletons();
+
   try {
-    const response = await fetch("https://portfolio-api-wauk.onrender.com/projects")
+
+    const response = await fetch("https://portfolio-api-wauk.onrender.com/projects");
     const projects = await response.json();
 
-    console.log("Proyectos:", projects);
+    container.innerHTML = "";
 
-    const container = document.getElementById("projects-container");
+    projects.forEach((project, index) => {
 
-    projects.forEach(project => {
       const card = document.createElement("div");
       card.classList.add("card");
 
+      card.style.animationDelay = `${index * 0.15}s`;
+
       card.innerHTML = `
-        <div class="card-info">
-          <h3>${project.name}</h3>
-          <p>${project.description}</p>
-          <div class="card-buttons">
-            <a href="${project.demo}" class="btn" target="_blank">Demo</a>
-            <a href="${project.github}" class="btn btn-secondary" target="_blank">Código</a>
-          </div>
-        </div>
-      `;
+  <img src="${project.image}" alt="${project.name}">
+
+  <div class="card-info">
+
+    <h3>${project.name}</h3>
+
+    <p>${project.description}</p>
+
+    <div class="tech-stack">
+      ${project.tech.map(t => `<span class="tech">${t}</span>`).join("")}
+    </div>
+
+    <div class="card-buttons">
+      <a href="${project.demo}" class="btn" target="_blank">Demo</a>
+      <a href="${project.github}" class="btn btn-secondary" target="_blank">Código</a>
+    </div>
+
+  </div>
+`;
 
       container.appendChild(card);
+
     });
 
   } catch (error) {

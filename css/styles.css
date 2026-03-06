@@ -167,6 +167,7 @@ nav h1 {
   height: 120px;
   border-radius: 50%;
   object-fit: cover;
+  margin: 0 auto;
 }
 
 .info h2 {
@@ -320,10 +321,12 @@ nav h1 {
 }
 
 .tech-stack{
-  display:flex;
-  gap:8px;
-  margin-bottom:12px;
-  flex-wrap:wrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 0.8rem 0 1rem 0;
+  flex-wrap: wrap;
 }
 
 .tech{
@@ -366,11 +369,15 @@ nav h1 {
 
   /* Sobre mí */
   .sobre-mi {
-    flex-direction: row;
-    justify-content: center;
-    gap: 3rem;
-    text-align: left;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1.5rem;
+  padding: 2rem 0;
+  width: 100%;
+}
 
   .info p {
     margin: 0;

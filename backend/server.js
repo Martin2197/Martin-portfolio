@@ -6,24 +6,7 @@ const PORT = 3000;
 
 app.use(cors());
 
-const projects = [
-  {
-    name: "Landing MasStore",
-    description: "Landing de productos electrónicos",
-    image: "https://martin2197.github.io/Martin-portfolio/ASSETS/Landing-MasStore.png",
-    tech: ["HTML", "CSS", "JS"],
-    demo: "https://martin2197.github.io/Martin-portfolio/",
-    github: "https://github.com/Martin2197/MAS-STORE"
-  },
-  {
-    name: "Maquetado Facebook",
-    description: "Réplica de Facebook para practicar Frontend",
-    image: "https://martin2197.github.io/Martin-portfolio/ASSETS/Maquetado-Facebook.png",
-    tech: ["HTML", "CSS"],
-    demo: "#",
-    github: "https://github.com/Martin2197/Maquetacion-Facebook"
-  }
-];
+const projects = require("./data/projects");
 
 app.get("/projects", (req, res) => {
   res.json(projects);

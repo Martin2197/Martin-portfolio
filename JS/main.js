@@ -1,6 +1,3 @@
-console.log("JS cargado correctamente");
-
-// MENU HAMBURGUESA
 const menuBtn = document.getElementById("menu-btn");
 const navLinks = document.getElementById("nav-links");
 const navItems = document.querySelectorAll(".nav-links a");
@@ -19,10 +16,7 @@ navItems.forEach(link => {
 });
 
 document.addEventListener("click", (e) => {
-  const clickDentroDelMenu = navLinks.contains(e.target);
-  const clickEnBoton = menuBtn.contains(e.target);
-
-  if (!clickDentroDelMenu && !clickEnBoton) {
+  if (!navLinks.contains(e.target) && !menuBtn.contains(e.target)) {
     navLinks.classList.remove("active");
     menuBtn.textContent = "☰";
   }
